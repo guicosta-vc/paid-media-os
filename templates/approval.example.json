@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "approval-create-paused-001",
+  "action": "CREATE_PAUSED",
+  "status": "APPROVED",
+  "account_id": "act_123456789",
+  "manifest_path": "campaign-manifest.json",
+  "approved_by": "named-owner",
+  "approval_source": "internal-record",
+  "issued_at": "2026-01-01T00:00:00Z",
+  "expires_at": "2026-01-02T00:00:00Z",
+  "scope_summary": "Create only the paused objects in the matching manifest.",
+  "notes": "Replace every example value before use."
+}

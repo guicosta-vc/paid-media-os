@@ -1,0 +1,17 @@
+{
+  "assets": [
+    {
+      "asset_id": "EXAMPLE-TOF-PAIN-01-V01",
+      "creative_concept_id": "PAIN-01",
+      "media_kind": "static",
+      "format": "1080x1350",
+      "copy_version": "v1",
+      "asset_sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
+      "rights_status": "approved",
+      "approval_status": "approved",
+      "meta_asset_id": "REPLACE_WITH_VERIFIED_META_IMAGE_HASH_OR_VIDEO_ID",
+      "source_path_or_url": "private-approved-storage-reference",
+      "notes": "Video is supported when meta_asset_id is a verified Meta video ID."
+    }
+  ]
+}

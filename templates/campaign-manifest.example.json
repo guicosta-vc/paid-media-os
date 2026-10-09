@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "campaign_key": "example-prospecting-001",
+  "account_id": "act_123456789",
+  "target_status": "PAUSED",
+  "objective": "OUTCOME_LEADS",
+  "daily_budget_minor_units": 10000,
+  "currency": "USD",
+  "destination_url": "https://example.com/book",
+  "conversion_event": "LEAD",
+  "learning_window_days": 7,
+  "stop_rules": ["Review after complete data window", "Do not increase budget automatically"],
+  "creative_asset_ids": ["EXAMPLE-TOF-PAIN-01-V01"],
+  "objects": [
+    {
+      "kind": "campaign",
+      "name": "Example | Prospecting | Paused",
+      "endpoint": "act_123456789/campaigns",
+      "payload": {
+        "name": "Example | Prospecting | Paused",
+        "objective": "OUTCOME_LEADS",
+        "status": "PAUSED",
+        "special_ad_categories": []
+      }
+    },
+    {
+      "kind": "adset",
+      "name": "Example | Broad | Paused",
+      "endpoint": "act_123456789/adsets",
+      "payload": {
+        "name": "Example | Broad | Paused",
+        "campaign_id": "$CAMPAIGN_ID",
+        "daily_budget": 10000,
+        "billing_event": "IMPRESSIONS",
+        "optimization_goal": "LEAD",
+        "status": "PAUSED"
+      }
+    },
+    {
+      "kind": "creative",
+      "name": "Example | Asset | Paused",
+      "endpoint": "act_123456789/adcreatives",
+      "payload": {
+        "name": "Example | Asset | Paused",
+        "object_story_spec": {
+          "page_id": "REPLACE_WITH_PAGE_ID",
+          "link_data": {
+            "link": "https://example.com/book",
+            "message": "Replace with approved primary text.",
+            "name": "Replace with approved headline.",
+            "image_hash": "REPLACE_WITH_VERIFIED_META_IMAGE_HASH"
+          }
+        }
+      }
+    },
+    {
+      "kind": "ad",
+      "name": "Example | Pain-01 | Paused",
+      "endpoint": "act_123456789/ads",
+      "payload": {
+        "name": "Example | Pain-01 | Paused",
+        "adset_id": "$ADSET_ID",
+        "creative": {"creative_id": "$CREATIVE_ID"},
+        "status": "PAUSED"
+      }
+    }
+  ]
+}

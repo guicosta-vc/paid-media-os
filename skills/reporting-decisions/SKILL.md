@@ -3,7 +3,7 @@ name: reporting-decisions
 description: Turn a complete paid-media snapshot into a decision.
 version: 0.1.0
 author: Gui Costa, Venture Compass
-license: License pending owner selection
+license: PolyForm Noncommercial License 1.0.0
 platforms: [linux, macos, windows]
 metadata:
   tags: [reporting, decisions, paid-media, learning]

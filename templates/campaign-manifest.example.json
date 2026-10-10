@@ -1,7 +1,8 @@
 {
   "schema_version": "1.0",
   "campaign_key": "example-prospecting-001",
-  "account_id": "act_123456789",
+  "tenant_id": "REPLACE_WITH_TENANT_ID",
+  "account_id": "act_REPLACE_WITH_ACCOUNT_ID",
   "target_status": "PAUSED",
   "objective": "OUTCOME_LEADS",
   "daily_budget_minor_units": 10000,
@@ -15,7 +16,7 @@
     {
       "kind": "campaign",
       "name": "Example | Prospecting | Paused",
-      "endpoint": "act_123456789/campaigns",
+      "endpoint": "act_REPLACE_WITH_ACCOUNT_ID/campaigns",
       "payload": {
         "name": "Example | Prospecting | Paused",
         "objective": "OUTCOME_LEADS",
@@ -26,7 +27,7 @@
     {
       "kind": "adset",
       "name": "Example | Broad | Paused",
-      "endpoint": "act_123456789/adsets",
+      "endpoint": "act_REPLACE_WITH_ACCOUNT_ID/adsets",
       "payload": {
         "name": "Example | Broad | Paused",
         "campaign_id": "$CAMPAIGN_ID",
@@ -39,7 +40,7 @@
     {
       "kind": "creative",
       "name": "Example | Asset | Paused",
-      "endpoint": "act_123456789/adcreatives",
+      "endpoint": "act_REPLACE_WITH_ACCOUNT_ID/adcreatives",
       "payload": {
         "name": "Example | Asset | Paused",
         "object_story_spec": {
@@ -56,7 +57,7 @@
     {
       "kind": "ad",
       "name": "Example | Pain-01 | Paused",
-      "endpoint": "act_123456789/ads",
+      "endpoint": "act_REPLACE_WITH_ACCOUNT_ID/ads",
       "payload": {
         "name": "Example | Pain-01 | Paused",
         "adset_id": "$ADSET_ID",

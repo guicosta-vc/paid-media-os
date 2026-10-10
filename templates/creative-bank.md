@@ -1,29 +1,91 @@
-# Creative Bank
+# 50-concept Creative Bank
 
-Create exactly 50 concepts after the Strategy Lock is approved. Use 10 categories with five concepts each: positioning, pain, desired outcome, mechanism one, mechanism two, mechanism three, use case, capability, proof or objection, and retargeting.
+Create exactly the 50 concepts below only after the Strategy Lock is approved. Complete every field for every SKU. Do not invent proof, permissions, customer results, or product capabilities.
 
-## Required fields for every concept
+## Required fields for each SKU
 
-```text
-ID: CATEGORY-01
-Category:
-Funnel: TOF / MOF / BOF / Retargeting
-Awareness: 1 / 2 / 3 / 4
-ICP signal:
-Narrative trigger:
-Claim status: verified / approved / needs-approval
+- Funnel: TOF / MOF / BOF / retargeting
+- Awareness level: 1 / 2 / 3 / 4
+- ICP signal and narrative trigger
+- Claim status: verified / approved / needs-approval
+- On-image headline, primary text, CTA, and destination
+- Hypothesis and visual job
+- Media kind: static / carousel / video
+- Required proof or asset, rights status, and production owner
+- Eligibility: eligible / revise / rejected
 
-On-image headline:
-Primary text:
-CTA:
+## SKU map
 
-Hypothesis:
-Visual job:
-Media kind: static / video / carousel
-Required proof or asset:
-Eligibility: eligible / revise / rejected
-```
+### Positioning
+- POS-01
+- POS-02
+- POS-03
+- POS-04
+- POS-05
 
-## Test cell selection
+### Pain
+- PAIN-01
+- PAIN-02
+- PAIN-03
+- PAIN-04
+- PAIN-05
 
-Select only 3 to 5 eligible concepts. Each selected unit must have a distinct hypothesis, a CTA matching the Strategy Lock, and an executable visual job. Record why near-misses were not selected.
+### Desired outcome
+- OUTCOME-01
+- OUTCOME-02
+- OUTCOME-03
+- OUTCOME-04
+- OUTCOME-05
+
+### Mechanism one
+- MECH1-01
+- MECH1-02
+- MECH1-03
+- MECH1-04
+- MECH1-05
+
+### Mechanism two
+- MECH2-01
+- MECH2-02
+- MECH2-03
+- MECH2-04
+- MECH2-05
+
+### Mechanism three
+- MECH3-01
+- MECH3-02
+- MECH3-03
+- MECH3-04
+- MECH3-05
+
+### Use case
+- USE-01
+- USE-02
+- USE-03
+- USE-04
+- USE-05
+
+### Capability
+- CAP-01
+- CAP-02
+- CAP-03
+- CAP-04
+- CAP-05
+
+### Proof or objection
+- PROOF-01
+- PROOF-02
+- PROOF-03
+- PROOF-04
+- PROOF-05
+
+### Retargeting
+- RET-01
+- RET-02
+- RET-03
+- RET-04
+- RET-05
+
+## Test-cell selection
+
+Select exactly three to five eligible SKUs with materially distinct hypotheses. Record selection in `test-selection.example.json`, link each selected SKU to its production handoff and registered asset, and explain each rejected near-miss. A 50-SKU bank is not permission to launch 50 ads.

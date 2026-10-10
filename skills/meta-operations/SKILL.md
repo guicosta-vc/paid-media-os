@@ -3,7 +3,7 @@ name: meta-operations
 description: Read Meta safely and create approved paused objects.
 version: 0.1.0
 author: Gui Costa, Venture Compass
-license: License pending owner selection
+license: PolyForm Noncommercial License 1.0.0
 platforms: [linux, macos, windows]
 metadata:
   tags: [meta, advertising, approvals, security]

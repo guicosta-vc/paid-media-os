@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "approval_id": "approval-activate-001",
+  "action": "ACTIVATE",
+  "status": "APPROVED",
+  "tenant_id": "REPLACE_WITH_TENANT_ID",
+  "account_id": "act_REPLACE_WITH_ACCOUNT_ID",
+  "object_id": "REPLACE_WITH_EXACT_PAUSED_OBJECT_ID",
+  "object_kind": "campaign",
+  "approved_by": "REPLACE_WITH_APPROVER",
+  "approval_source": "REPLACE_WITH_APPROVAL_RECORD",
+  "issued_at": "2026-01-01T00:00:00Z",
+  "expires_at": "2026-01-02T00:00:00Z"
+}

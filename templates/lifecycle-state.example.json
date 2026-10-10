@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "tenant_id": "REPLACE_WITH_TENANT_ID",
+  "account_id": "act_REPLACE_WITH_ACCOUNT_ID",
+  "state": "onboarding",
+  "accountable_owner": "REPLACE_WITH_OWNER",
+  "credential_alias": "REPLACE_WITH_TENANT_SCOPED_CREDENTIAL_ALIAS",
+  "required_evidence": [],
+  "blockers": [],
+  "next_permitted_action": "complete-tenant-intake",
+  "updated_at": "2026-01-01T00:00:00Z"
+}

@@ -18,3 +18,7 @@ python3 scripts/check_release.py
 ## Pull request standard
 
 Explain the problem, state the approval/safety boundary, list tests run, and call out any Meta API assumptions. Do not claim live Meta behavior from a mocked test.
+
+## Contribution rights
+
+By submitting a contribution, you confirm that you have authority to contribute it and that it is original or compatible with this repository's license. Do not submit a contribution until a contributor license agreement, if requested by the rights holder, has been completed. This enables the rights holder to distribute accepted contributions under both the public license and separately negotiated commercial terms.

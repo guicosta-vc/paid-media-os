@@ -3,7 +3,7 @@ name: creative-bank
 description: Build and select a 50-concept paid creative bank.
 version: 0.1.0
 author: Gui Costa, Venture Compass
-license: License pending owner selection
+license: PolyForm Noncommercial License 1.0.0
 platforms: [linux, macos, windows]
 metadata:
   tags: [creative, copy, paid-media, testing]

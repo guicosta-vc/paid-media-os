@@ -3,7 +3,7 @@ name: marketing-os
 description: Run a safe, artifact-backed Meta marketing workflow.
 version: 0.1.0
 author: Gui Costa, Venture Compass
-license: License pending owner selection
+license: PolyForm Noncommercial License 1.0.0
 platforms: [linux, macos, windows]
 metadata:
   tags: [marketing, meta, paid-media, operations]

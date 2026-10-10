@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
+import hmac
 import json
 import os
 import re
@@ -21,6 +23,7 @@ TEMPLATES = ROOT / "templates"
 ACK_CREATE = "I_UNDERSTAND_THIS_CREATES_PAUSED_META_OBJECTS"
 ACK_ACTIVATE = "I_UNDERSTAND_THIS_ACTIVATES_A_META_OBJECT"
 OBJECT_KINDS = {"campaign", "adset", "creative", "ad"}
+ENDPOINT_SUFFIXES = {"campaign": "campaigns", "adset": "adsets", "creative": "adcreatives", "ad": "ads"}
 
 
 def now() -> str:
@@ -46,6 +49,11 @@ def read_json(path: Path) -> dict[str, Any]:
 def write_json(path: Path, data: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def json_sha256(data: dict[str, Any]) -> str:
+    encoded = json.dumps(data, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(encoded).hexdigest()
 
 
 def private_path(workspace: Path, relative: str) -> Path:
@@ -80,6 +88,11 @@ def validate_workspace(workspace: Path) -> list[str]:
         config, manifest, catalog = load_workspace(workspace)
     except ValueError as exc:
         return [str(exc)]
+    tenant_id = config.get("tenant_id")
+    if not isinstance(tenant_id, str) or not tenant_id or tenant_id.startswith("REPLACE_"):
+        errors.append("workspace.json tenant_id must be a completed tenant identifier")
+    if manifest.get("tenant_id") != tenant_id:
+        errors.append("campaign manifest tenant_id must match workspace tenant_id")
     account_id = config.get("account_id")
     if not is_account_id(account_id):
         errors.append("workspace.json account_id must use act_<digits>")
@@ -118,14 +131,16 @@ def validate_workspace(workspace: Path) -> list[str]:
             errors.append(f"{prefix} must be an object")
             continue
         kind = obj.get("kind")
+        kind_suffix = ENDPOINT_SUFFIXES.get(kind) if isinstance(kind, str) else None
         endpoint = obj.get("endpoint")
         payload = obj.get("payload")
         if kind not in OBJECT_KINDS:
             errors.append(f"{prefix} kind must be one of {sorted(OBJECT_KINDS)}")
         else:
             seen_kinds.add(kind)
-        if not isinstance(endpoint, str) or not endpoint.startswith(f"{account_id}/"):
-            errors.append(f"{prefix} endpoint must start with the configured account ID")
+        expected_endpoint = f"{account_id}/{kind_suffix or ''}"
+        if not isinstance(endpoint, str) or endpoint != expected_endpoint:
+            errors.append(f"{prefix} endpoint must equal {expected_endpoint!r}")
         if not isinstance(payload, dict):
             errors.append(f"{prefix} payload must be an object")
         elif payload.get("status") not in {None, "PAUSED"}:
@@ -145,6 +160,10 @@ def init_workspace(workspace: Path) -> None:
         "creative-catalog.example.json": "creative-catalog.json",
         "strategy-lock.md": "strategy-lock.md",
         "creative-bank.md": "creative-bank.md",
+        "tenant-intake.md": "tenant-intake.md",
+        "lifecycle-state.example.json": "lifecycle-state.json",
+        "test-selection.example.json": "test-selection.json",
+        "production-handoff.md": "production-handoff.md",
         "decision-record.md": "decision-record.md",
     }
     for source, destination in mapping.items():
@@ -194,20 +213,42 @@ class MetaClient:
         return payload
 
     def readback(self, object_id: str) -> dict[str, Any]:
-        return self.request("GET", object_id, {"fields": "id,name,status,effective_status,configured_status"})
+        return self.request("GET", object_id, {"fields": "id,name,status,effective_status,configured_status,account_id"})
 
 
-def load_approval(workspace: Path, approval_rel: str, action: str, account_id: str, manifest_rel: str | None = None) -> dict[str, Any]:
+def load_approval(workspace: Path, approval_rel: str, action: str, account_id: str, manifest_rel: str | None = None, tenant_id: str | None = None) -> dict[str, Any]:
     approval = read_json(private_path(workspace, approval_rel))
     if approval.get("action") != action or approval.get("status") != "APPROVED":
         fail(f"Approval must be APPROVED for action {action}")
     if approval.get("account_id") != account_id:
         fail("Approval account_id does not match workspace")
+    if tenant_id is not None and approval.get("tenant_id") != tenant_id:
+        fail("Approval tenant_id does not match workspace")
     if iso_time(str(approval.get("expires_at", "")), "expires_at") <= datetime.now(timezone.utc):
         fail("Approval is expired")
     if manifest_rel and approval.get("manifest_path") != manifest_rel:
         fail("Approval manifest_path does not match the controlled manifest")
+    if manifest_rel:
+        expected_digest = str(approval.get("manifest_sha256", ""))
+        if not re.fullmatch(r"[0-9a-f]{64}", expected_digest):
+            fail("Approval needs a valid manifest_sha256")
+        actual_digest = json_sha256(read_json(private_path(workspace, manifest_rel)))
+        if not hmac.compare_digest(expected_digest, actual_digest):
+            fail("Approval manifest_sha256 does not match the controlled manifest")
     return approval
+
+
+def validate_activation_target(approval: dict[str, Any], object_id: str, readback: dict[str, Any], account_id: str) -> None:
+    if approval.get("object_id") != object_id:
+        fail("Approval object_id does not match the requested activation target")
+    if approval.get("object_kind") not in OBJECT_KINDS:
+        fail("Approval object_kind must be a supported object kind")
+    if readback.get("id") != object_id:
+        fail("Activation readback object ID does not match the requested target")
+    if readback.get("account_id") != account_id:
+        fail("Activation readback account does not match the approved account")
+    if readback.get("effective_status") not in {"PAUSED", "ACTIVE"}:
+        fail("Activation target is not currently eligible for activation")
 
 
 def resolve_placeholders(value: Any, ids: dict[str, str]) -> Any:
@@ -230,7 +271,7 @@ def create_paused(args: argparse.Namespace) -> None:
     if errors:
         fail("Validation failed:\n- " + "\n- ".join(errors))
     config, manifest, _ = load_workspace(workspace)
-    approval = load_approval(workspace, args.approval, "CREATE_PAUSED", config["account_id"], "campaign-manifest.json")
+    approval = load_approval(workspace, args.approval, "CREATE_PAUSED", config["account_id"], "campaign-manifest.json", config["tenant_id"])
     planned: list[dict[str, Any]] = []
     ids: dict[str, str] = {}
     for obj in manifest["objects"]:
@@ -315,12 +356,16 @@ def decide(args: argparse.Namespace) -> None:
 
 def activate(args: argparse.Namespace) -> None:
     workspace = Path(args.workspace)
+    errors = validate_workspace(workspace)
+    if errors:
+        fail("Validation failed:\n- " + "\n- ".join(errors))
     config = read_json(workspace / "workspace.json")
-    approval = load_approval(workspace, args.approval, "ACTIVATE", config["account_id"])
+    approval = load_approval(workspace, args.approval, "ACTIVATE", config["account_id"], tenant_id=config["tenant_id"])
     if not args.execute or args.acknowledge != ACK_ACTIVATE:
         fail("Activation needs --execute and the exact activation acknowledgement")
     client = MetaClient()
     before = client.readback(args.object_id)
+    validate_activation_target(approval, args.object_id, before, config["account_id"])
     response = client.request("POST", args.object_id, {"status": "ACTIVE"})
     after = client.readback(args.object_id)
     receipt = {"receipt_kind": "activate", "attempted_at": now(), "approval_id": approval["approval_id"], "account_id": config["account_id"], "object_id": args.object_id, "before": before, "response": response, "after": after}

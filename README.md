@@ -14,10 +14,18 @@ It is deliberately conservative around external systems: reads are explicit,
 creation begins paused, activation needs a separate approval, and budget changes
 are never automatic.
 
+## License and commercial use
+
+Paid Media OS is **source-available** under the PolyForm Noncommercial License 1.0.0.
+You may study, modify, and redistribute it for permitted noncommercial purposes.
+Commercial use, including agency client service, internal business use, hosted
+services, or resale, requires a separate written license. See [LICENSE](LICENSE),
+[NOTICE](NOTICE), and [Commercial licensing](COMMERCIAL-LICENSE.md).
+
 ## What it includes
 
 - Agent skills for intake, the 50-concept creative bank, Meta operations, and reporting decisions.
-- A standard-library Python CLI that creates a private workspace, validates artifacts, reads Meta account and insights data, builds paused Meta objects, and records sanitized receipts.
+- A standard-library Python CLI that creates a private workspace, validates artifacts, reads Meta account and insights data, builds paused Meta objects, and records private receipts.
 - Templates for Strategy Locks, creative catalogs, campaign manifests, scoped approvals, reports, and decision records.
 - Tests and a release scanner designed to catch customer names, vendor references, common credential markers, and non-English source material before publication.
 
@@ -35,11 +43,13 @@ python3 scripts/mos.py init --workspace ./workspace/acme-growth
 python3 scripts/mos.py validate --workspace ./workspace/acme-growth
 python3 -m unittest discover -s tests -v
 python3 scripts/check_release.py
-# Before a public release, replace LICENSE and run:
 python3 scripts/check_release.py --release
 ```
 
-The workspace is ignored by Git. It contains your account-specific, non-secret operating artifacts and must remain private.
+The first validation is expected to fail until you replace every `REPLACE_` value,
+complete the Strategy Lock, catalog approved assets, and provide a real private
+account scope. The workspace is ignored by Git. It contains account-specific,
+potentially sensitive operating artifacts and must remain private.
 
 ## Agent installation
 
@@ -60,6 +70,8 @@ Copy a selected folder from `skills/` to your profile's skill directory, or keep
 Attach or paste `AGENT_GUIDE.md`, the relevant `skills/*/SKILL.md`, and the linked reference files. The artifacts and CLI are agent-agnostic. See [Agent compatibility](docs/agent-compatibility.md) for platform-specific installation and an offline acceptance check.
 
 ## Operating model
+
+Follow the [implementation guide](docs/implementation-guide.md) for company and agency onboarding, tenant isolation, the full 50-SKU process, production handoffs, paused-build approvals, and reporting decisions.
 
 ```text
 Evidence and Strategy Lock
@@ -98,7 +110,7 @@ The report collector stores a sanitized local receipt and the exact reporting wi
 
 ### Meta writes: deliberate and gated
 
-Prepare `campaign-manifest.json` and a matching record under `approvals/`. First run validation and inspect the dry run:
+Prepare `campaign-manifest.json` and a matching record under `approvals/`. The approval must include the SHA-256 digest of the reviewed manifest; any later edit invalidates it. First run validation and inspect the dry run:
 
 ```bash
 python3 scripts/mos.py validate --workspace ./workspace/acme-growth
@@ -135,7 +147,7 @@ For writes, each asset must already have a verified Meta asset ID and the exact 
 
 ## Release status
 
-This local draft is not a public release until its owner selects a license and authorizes publication. The included `LICENSE` intentionally says so.
+This is a published public starter kit. It contains only generic examples and intentionally excludes customer workspaces, credentials, account identifiers, private reports, and proprietary third-party material.
 
 ## Contributing
 
@@ -146,7 +158,6 @@ Keep all contributions original, generic, and English-only. Never submit client 
 ```bash
 python3 -m unittest discover -s tests -v
 python3 scripts/check_release.py
-# Before a public release, replace LICENSE and run:
 python3 scripts/check_release.py --release
 ```
 

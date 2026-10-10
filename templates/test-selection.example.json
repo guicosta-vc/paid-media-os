@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "tenant_id": "REPLACE_WITH_TENANT_ID",
+  "strategy_lock_version": "REPLACE_WITH_APPROVED_VERSION",
+  "selected_concept_ids": ["REPLACE_WITH_3_TO_5_ELIGIBLE_CONCEPT_IDS"],
+  "selection_reason": "Each selected concept tests a materially distinct hypothesis.",
+  "rejected_near_misses": [],
+  "approved_by": "REPLACE_WITH_APPROVER",
+  "approved_at": "2026-01-01T00:00:00Z"
+}

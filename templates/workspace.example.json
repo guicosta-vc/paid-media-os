@@ -1,7 +1,9 @@
 {
   "schema_version": "1.0",
   "workspace_name": "example-growth",
-  "account_id": "act_123456789",
+  "tenant_id": "REPLACE_WITH_TENANT_ID",
+  "account_id": "act_REPLACE_WITH_ACCOUNT_ID",
+  "credential_alias": "REPLACE_WITH_TENANT_SCOPED_CREDENTIAL_ALIAS",
   "timezone": "America/New_York",
   "currency": "USD",
   "strategy_lock_path": "strategy-lock.md",

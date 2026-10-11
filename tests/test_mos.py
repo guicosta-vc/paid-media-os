@@ -159,6 +159,10 @@ class MarketingOSTest(unittest.TestCase):
         self.addCleanup(fixture.unlink)
         self.assertTrue(any("UNTRACKED_RELEASE_SCANNER_FIXTURE.txt" in problem for problem in check_release.scan()))
 
+    def test_release_contract_uses_business_source_license(self):
+        self.assertEqual(check_release.LICENSE_TITLE, "Business Source License 1.1")
+        self.assertTrue((ROOT / "LICENSE").read_text(encoding="utf-8").startswith("Business Source License 1.1"))
+
     def test_private_path_rejects_escape(self):
         workspace = self.make_workspace()
         with self.assertRaisesRegex(ValueError, "inside the workspace"):

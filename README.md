@@ -16,11 +16,13 @@ are never automatic.
 
 ## License and commercial use
 
-Paid Media OS is **source-available** under the PolyForm Noncommercial License 1.0.0.
-You may study, modify, and redistribute it for permitted noncommercial purposes.
-Commercial use, including agency client service, internal business use, hosted
-services, or resale, requires a separate written license. See [LICENSE](LICENSE),
-[NOTICE](NOTICE), and [Commercial licensing](COMMERCIAL-LICENSE.md).
+Paid Media OS is **source-available** under the Business Source License 1.1 (BUSL-1.1).
+
+You may use, configure, modify, and deploy it commercially for your own business or client services, including agency work, consulting, implementation, creative production, and managed campaign services. You may charge for those services.
+
+You may not offer Paid Media OS, or a substantially similar derivative, as a paid standalone product, template library, skill pack, agent bundle, course, repository, or competing operating system without a separate written license. See [LICENSE](LICENSE), [NOTICE](NOTICE), [Commercial licensing](COMMERCIAL-LICENSE.md), and [Trademark policy](TRADEMARKS.md).
+
+Each release changes to Apache-2.0 on the Change Date stated in its LICENSE.
 
 ## What it includes
 

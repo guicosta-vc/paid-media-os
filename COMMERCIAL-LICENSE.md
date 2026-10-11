@@ -1,7 +1,15 @@
 # Commercial licensing
 
-The public license for this repository is the [PolyForm Noncommercial License 1.0.0](LICENSE). It does not grant commercial-use rights.
+Paid Media OS is source-available under the [Business Source License 1.1](LICENSE).
 
-To request a commercial license, contact guicosta@vemturecompass.agency. Commercial rights are granted only by a separate written agreement signed by the rights holder.
+## Permitted commercial services
 
-A commercial agreement should define the permitted scope, including internal business use, client-service or agency use, hosted services, redistribution, sublicensing, support, term, territory, and fees.
+The Additional Use Grant allows a company or agency to use, configure, modify, and deploy Paid Media OS for its own business and client services. This includes advertising operations, creative production, consulting, implementation, support, and managed campaign services. A service provider may charge for those services.
+
+## Restricted productization
+
+A separate written license is required to offer Paid Media OS, or a substantially similar derivative, as a paid standalone product, template library, skill pack, agent bundle, course, repository, or competing operating system.
+
+For a license covering a restricted product offering, contact guicosta@vemturecompass.agency. No inquiry or payment grants rights unless the rights holder signs a separate written agreement.
+
+Each release becomes available under Apache-2.0 on the Change Date stated in its LICENSE. See LICENSE for the binding terms and definitions.

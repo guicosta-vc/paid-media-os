@@ -9,11 +9,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-LICENSE_TITLE = "PolyForm Noncommercial License 1.0.0"
+LICENSE_TITLE = "Business Source License 1.1"
 REQUIRED_NOTICE_PREFIXES = (
-    "Required Notice: Copyright (c) 2026 Gui Costa and Venture Compass.",
-    "Required Notice: Paid Media OS is licensed under the PolyForm Noncommercial License 1.0.0.",
-    "Required Notice: Commercial use requires a separate license. Contact: guicosta@vemturecompass.agency",
+    "Copyright (c) 2026 Gui Costa and Venture Compass.",
+    "Paid Media OS is source-available under the Business Source License 1.1 (BUSL-1.1).",
+    "Commercial services are permitted as described in LICENSE; competing productization requires a separate license.",
 )
 PATTERNS = {
     "Meta account-shaped identifier": re.compile(r"\bact_[0-9]{6,}\b", re.I),
@@ -57,8 +57,8 @@ def release_contract_problems() -> list[str]:
     license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     notice_text = (ROOT / "NOTICE").read_text(encoding="utf-8")
     readme_text = (ROOT / "README.md").read_text(encoding="utf-8")
-    if not license_text.startswith(f"# {LICENSE_TITLE}"):
-        problems.append("LICENSE must contain the exact PolyForm Noncommercial License 1.0.0 text")
+    if not license_text.startswith(LICENSE_TITLE):
+        problems.append("LICENSE must contain the Business Source License 1.1 text")
     for line in REQUIRED_NOTICE_PREFIXES:
         if line not in notice_text:
             problems.append(f"NOTICE is missing required line: {line}")
@@ -71,6 +71,9 @@ def release_contract_problems() -> list[str]:
         text_content(path) or "" for path in tracked_files()
     ):
         problems.append("a skill or document still says the license is pending")
+    superseded_license_marker = "Poly" + "Form Noncommercial"
+    if superseded_license_marker in "\n".join(text_content(path) or "" for path in tracked_files()):
+        problems.append("a file still references the superseded " + superseded_license_marker + " license")
     return problems
 
 

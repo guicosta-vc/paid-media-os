@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "tenant_id": "REPLACE_WITH_TENANT_ID",
+  "account_id": "act_REPLACE_WITH_ACCOUNT_ID",
+  "source_report": "reports/REPLACE_WITH_REPORT_FILENAME.json",
+  "source_report_sha256": "REPLACE_WITH_SHA256_OF_THE_IMMUTABLE_REPORT",
+  "coverage_status": "complete",
+  "method": "Describe the paging, time-window, and downstream reconciliation performed.",
+  "evidence_refs": ["private-reconciliation-record"],
+  "reviewed_by": "REPLACE_WITH_REVIEWER",
+  "reviewed_at": "2026-01-01T00:00:00Z"
+}

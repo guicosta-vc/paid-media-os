@@ -16,14 +16,16 @@ Use this skill to convert a dated, scoped paid-media report into a bounded learn
 ## Procedure
 
 1. Confirm account, timezone, currency, attribution semantics, and reporting window.
-   Completion: partial or unknown coverage is explicitly labeled.
+   Completion: the raw snapshot remains immutable and partial or unknown coverage is explicitly labeled.
 2. Read platform delivery separately from landing, qualified-action, pipeline, and revenue evidence.
    Completion: platform events are not relabeled as business outcomes.
 3. Compare the observed result with the hypothesis and predeclared threshold, if one exists.
    Completion: causal claims are avoided when the comparison is observational or underpowered.
-4. Select one status: `keep`, `kill`, `remix`, `defer`, `insufficient-data`, or `blocked`.
+4. Reconcile coverage in a separate record that binds the source report path and SHA-256, scope, method, evidence references, and reviewer. Validate it with `reconcile` before `decide`.
+   Completion: complete coverage is evidenced without editing the raw snapshot.
+5. Select one status: `keep`, `kill`, `remix`, `defer`, `insufficient-data`, or `blocked`.
    Completion: the rationale states evidence, uncertainty, and the next approval needed.
-5. If a new creative cell is justified, request 3-5 next concepts rather than restarting an unbounded brainstorm.
+6. If a new creative cell is justified, request 3-5 next concepts rather than restarting an unbounded brainstorm.
    Completion: the learning links to the prior creative IDs and metric window.
 
 ## Rules

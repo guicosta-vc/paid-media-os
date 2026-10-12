@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "tenant_id": "REPLACE_WITH_TENANT_ID",
+  "strategy_lock_version": "REPLACE_WITH_APPROVED_VERSION",
+  "handoffs": [
+    {
+      "concept_id": "REPLACE_WITH_SELECTED_CONCEPT_ID",
+      "asset_id": "REPLACE_WITH_APPROVED_CATALOG_ASSET_ID",
+      "status": "APPROVED"
+    }
+  ],
+  "approved_by": "REPLACE_WITH_APPROVER",
+  "approved_at": "2026-01-01T00:00:00Z"
+}

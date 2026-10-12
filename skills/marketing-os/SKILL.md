@@ -26,16 +26,18 @@ Do not use this skill to bypass budget, activation, claim, customer, or platform
 1. Read `AGENT_GUIDE.md`, `SECURITY.md`, and `templates/strategy-lock.md`.
    Completion: known facts, assumptions, and prohibited claims are separate.
 2. Initialize a private workspace with `python3 scripts/mos.py init --workspace <private-path>`.
-   Completion: configuration and blank operating artifacts exist, with no secret in them.
-3. Use `creative-bank/SKILL.md` before asset production.
-   Completion: exactly 50 concepts exist and a 3-5-item cell is selected.
-4. Register only approved static or video assets in `creative-catalog.json`.
-   Completion: every selected asset has a checksum, rights status, approval state, and verified Meta asset ID.
-5. Prepare and validate the campaign manifest with `python3 scripts/mos.py validate --workspace <private-path>`.
-   Completion: the manifest, assets, account ID, and target status reconcile.
-6. Use `meta-operations/SKILL.md` for reads or writes.
+   Completion: configuration, approvals, reporting, and machine-checkable gate artifacts exist, with no secret in them.
+3. Complete tenant intake and set `lifecycle-state.json` to `ready-for-paused-build` only after scope, owner, tracking evidence, and blockers are reviewed. Approve `strategy-lock.md` in `strategy-approval.json`.
+   Completion: the lifecycle and Strategy Lock records match the workspace tenant and Strategy Lock version.
+4. Use `creative-bank/SKILL.md` before asset production.
+   Completion: exactly 50 concepts exist in `creative-bank-register.json`, and an approved 3-5-item eligible cell is selected in `test-selection.json`.
+5. Register only approved static, carousel, or video assets in `creative-catalog.json`, and record one matching approved production handoff per selected concept in `production-register.json`.
+   Completion: every selected asset has a checksum, rights status, approval state, verified Meta asset IDs, and exact creative-payload binding.
+6. Prepare and validate the campaign manifest with `python3 scripts/mos.py validate --workspace <private-path>`.
+   Completion: the full gate chain, manifest, assets, account ID, and target status reconcile.
+7. Use `meta-operations/SKILL.md` for reads or writes.
    Completion: a read receipt or a write receipt plus exact read-back exists.
-7. Use `reporting-decisions/SKILL.md` after a complete reporting window.
+8. Use `reporting-decisions/SKILL.md` after a complete reporting window.
    Completion: the recommendation is bounded by evidence and names any new approval needed.
 
 ## Safety rules

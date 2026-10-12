@@ -26,11 +26,11 @@ Before accepting any uploaded input, require the operator to remove credentials,
 2. For every concept, record funnel, awareness, ICP signal, trigger, claim status, on-image headline, primary text, CTA, hypothesis, visual job, and media kind.
    Completion: no concept lacks a required field or exceeds the claim ledger.
 3. Verify uniqueness, headline clarity, CTA alignment, category coverage, and proof safety.
-   Completion: every concept is eligible, revise, or rejected.
+   Completion: every concept is eligible, revise, or rejected; the 50 unique IDs and outcomes are recorded in `creative-bank-register.json`.
 4. Select 3-5 eligible concepts with materially distinct hypotheses and feasible assets.
-   Completion: the selection explains why near-misses were not selected.
+   Completion: `test-selection.json` names exactly 3-5 eligible IDs and explains why near-misses were not selected.
 5. Create a production handoff. For static, carousel, or video, specify format, placement, approved assets, rights limits, visual job, and exact copy.
-   Completion: every selected item can be produced without inventing proof or product UI.
+   Completion: every selected item can be produced without inventing proof or product UI, then receives an approved `production-register.json` entry that binds its concept ID to a catalog asset.
 
 ## Rules
 

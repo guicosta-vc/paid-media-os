@@ -88,4 +88,4 @@ Create exactly the 50 concepts below only after the Strategy Lock is approved. C
 
 ## Test-cell selection
 
-Select exactly three to five eligible SKUs with materially distinct hypotheses. Record selection in `test-selection.example.json`, link each selected SKU to its production handoff and registered asset, and explain each rejected near-miss. A 50-SKU bank is not permission to launch 50 ads.
+Select exactly three to five eligible SKUs with materially distinct hypotheses. Record selection in the initialized workspace's `test-selection.json`, link each selected SKU to its production handoff and registered asset, and explain each rejected near-miss. A 50-SKU bank is not permission to launch 50 ads.

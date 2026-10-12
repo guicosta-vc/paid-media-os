@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "tenant_id": "REPLACE_WITH_TENANT_ID",
+  "strategy_lock_version": "REPLACE_WITH_APPROVED_VERSION",
+  "concepts": [
+    {
+      "concept_id": "REPLACE_WITH_CONCEPT_ID",
+      "eligibility": "eligible"
+    }
+  ],
+  "reviewed_by": "REPLACE_WITH_REVIEWER",
+  "reviewed_at": "2026-01-01T00:00:00Z"
+}

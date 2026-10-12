@@ -9,9 +9,9 @@
       "asset_sha256": "REPLACE_WITH_64_CHARACTER_SHA256",
       "rights_status": "approved",
       "approval_status": "approved",
-      "meta_asset_id": "REPLACE_WITH_VERIFIED_META_IMAGE_HASH_OR_VIDEO_ID",
+      "meta_asset_ids": ["REPLACE_WITH_VERIFIED_META_IMAGE_HASH_OR_VIDEO_ID"],
       "source_path_or_url": "private-approved-storage-reference",
-      "notes": "Video is supported when meta_asset_id is a verified Meta video ID."
+      "notes": "Use image_hash for static or carousel assets and video_id for video assets. Every referenced Meta asset ID must be listed here."
     }
   ]
 }

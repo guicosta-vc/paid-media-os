@@ -1,7 +1,7 @@
-# Contributor License Agreement
+# External contribution policy
 
-Before a contribution is merged, the contributor and the rights holder must complete a separate written contributor license agreement if the contribution will be included in any separately licensed commercial offering.
+Paid Media OS does not currently accept external pull requests, patches, or content submissions for merge. No contributor license agreement is offered at this time, and a pull request does not grant the project any right to use, sublicense, or commercially relicense its contents.
 
-The agreement should identify the contributor, contribution, and rights holder, and grant the rights holder the rights needed to use, reproduce, modify, distribute, sublicense, and relicense the contribution under the public license and separately negotiated commercial terms.
+You may report a reproducible non-sensitive issue or propose an idea through the repository's issue tracker. Do not include client data, credentials, private account identifiers, vendor material, or confidential work.
 
-Submitting a pull request alone is not a signed contributor license agreement. Do not merge a contribution requiring commercial relicensing until the completed agreement is retained privately by the rights holder.
+The rights holders may publish a contribution agreement and a documented signature workflow in a future release. Until then, maintainers merge only changes created by the rights holders or their authorized contractors under separate private agreements.

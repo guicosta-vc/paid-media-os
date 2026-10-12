@@ -1,24 +1,27 @@
 # Contributing
 
-Paid Media OS accepts original, generic, English-only improvements that make the operating system safer, clearer, or more useful.
+## External changes
 
-## Before opening a pull request
+Paid Media OS does not currently accept external pull requests, patches, documentation submissions, or other contributions for merge. See [CLA.md](CLA.md) for the deterministic contribution-rights policy.
 
-1. Do not include credentials, raw exports, client names, customer data, account IDs, private URLs, screenshots, or proprietary third-party material.
-2. Do not copy prompts, templates, code, or documentation from paid courses, vendors, employers, or customer workspaces.
-3. Keep external writes disabled by default and require a matching, unexpired approval plus an explicit runtime action.
-4. Add or update offline tests for behavior changes.
-5. Run:
+## Feedback and issue reports
+
+You may open a non-sensitive issue that describes a reproducible bug, a safety gap, or a documentation improvement. Do not include credentials, raw exports, client names, customer data, account IDs, private URLs, screenshots with account details, personal data, or proprietary third-party material.
+
+For security-sensitive findings, follow [SECURITY.md](SECURITY.md) instead of opening a public issue.
+
+## Maintainer quality standard
+
+Changes made by rights holders or authorized contractors must be original, generic, English-only, and safe by default. They must:
+
+1. Keep external writes disabled by default and require a matching, unexpired approval plus an explicit runtime action.
+2. Add or update offline tests for behavior changes.
+3. Run:
 
 ```bash
 python3 -m unittest discover -s tests -v
 python3 scripts/check_release.py
+python3 scripts/check_release.py --release
 ```
 
-## Pull request standard
-
-Explain the problem, state the approval/safety boundary, list tests run, and call out any Meta API assumptions. Do not claim live Meta behavior from a mocked test.
-
-## Contribution rights
-
-By submitting a contribution, you confirm that you have authority to contribute it and that it is original or compatible with this repository's license. Do not submit a contribution until a contributor license agreement, if requested by the rights holder, has been completed. This enables the rights holder to distribute accepted contributions under both the public license and separately negotiated commercial terms.
+Do not claim live Meta behavior from a mocked test. State any Meta API assumption and preserve the relevant approval and safety boundary.

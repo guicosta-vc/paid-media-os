@@ -25,17 +25,17 @@ Completion: the report declares account, time window, collection time, and any i
 ## Paused creation procedure
 
 1. Validate the workspace, catalog, and manifest.
-2. Verify assets have approved copy, rights, checksum, and verified Meta asset IDs.
+2. Verify assets have approved copy, rights, checksum, verified Meta asset IDs, and a matching approved production-register entry. The creative payload must use exactly the catalog's image hash or video ID.
 3. Create an unexpired `CREATE_PAUSED` approval that names the same account and manifest.
 4. Run a dry run, inspect every payload, then make the call only with `--execute` and the exact acknowledgement.
 5. Inspect the receipt and exact object read-back.
 
-Completion: the receipt maps every attempted object to a response and read-back. Any uncertain result stops further writes.
+Completion: the receipt is persisted before each POST, maps every attempted object to a response and read-back, and proves exact account scope plus paused status for delivery objects. Any uncertain result stops further writes.
 
 ## Activation procedure
 
 1. Read back the exact target object and current status.
-2. Obtain a separate, unexpired `ACTIVATE` approval for the same account.
+2. Change the reviewed lifecycle record so its `next_permitted_action` is exactly `activate`, then obtain a separate, unexpired `ACTIVATE` approval for the same account.
 3. Use `activate` with the explicit acknowledgement.
 4. Inspect the read-back receipt.
 
